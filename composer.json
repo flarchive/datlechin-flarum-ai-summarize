@@ -1,0 +1,116 @@
+{
+    "name": "datlechin/flarum-ai-summarize",
+    "description": "AI summaries of Flarum discussions, written once, shown under the first post, citing the posts they come from.",
+    "keywords": [
+        "flarum",
+        "ai",
+        "summary",
+        "summarize",
+        "tldr",
+        "discussion",
+        "llm"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "homepage": "https://github.com/datlechin/flarum-ai-summarize",
+    "authors": [
+        {
+            "name": "Ngo Quoc Dat",
+            "email": "datlechin@gmail.com",
+            "homepage": "https://nqd.vn",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/datlechin/flarum-ai-summarize/issues",
+        "source": "https://github.com/datlechin/flarum-ai-summarize",
+        "forum": "https://discuss.flarum.org/d/38283"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/datlechin"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "datlechin/flarum-ai": "^1.0",
+        "flarum/core": "^2.0"
+    },
+    "require-dev": {
+        "flarum/likes": "*",
+        "flarum/markdown": "*",
+        "flarum/mentions": "*",
+        "flarum/phpstan": "^2.0",
+        "flarum/tags": "*",
+        "flarum/testing": "^2.0",
+        "laravel/pint": "^1.18"
+    },
+    "autoload": {
+        "psr-4": {
+            "Datlechin\\AiSummarize\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Datlechin\\AiSummarize\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "AI Summarize",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-wand-magic-sparkles",
+                "color": "#fff",
+                "backgroundColor": "#8b5cf6"
+            },
+            "optional-dependencies": [
+                "flarum-likes",
+                "flarum-markdown",
+                "flarum-mentions"
+            ]
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": true,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": true,
+                "prettier": true,
+                "typescript": true,
+                "bundlewatch": false,
+                "backendTesting": true,
+                "editorConfig": true,
+                "styleci": true
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": [
+            "@test:integration"
+        ],
+        "test:integration": "phpunit -c tests/phpunit.integration.xml",
+        "test:setup": "@php tests/integration/setup.php",
+        "analyse:phpstan": [
+            "@php tests/phpstan-setup.php",
+            "phpstan analyse"
+        ],
+        "clear-cache:phpstan": "phpstan clear-result-cache"
+    },
+    "scripts-descriptions": {
+        "test": "Runs all tests.",
+        "test:integration": "Runs all integration tests.",
+        "test:setup": "Sets up a database for use with integration tests. Execute this only once.",
+        "analyse:phpstan": "Run static analysis"
+    }
+}

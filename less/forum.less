@@ -1,0 +1,75 @@
+// Laid out on the same grid as a post, so the summary lines up with the posts around it.
+.DiscussionSummary {
+  display: grid;
+  grid-template-columns: var(--avatar-column-width) 1fr;
+  padding: var(--post-padding) var(--post-padding) var(--post-padding) 0;
+
+  @media @phone {
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    padding-right: 0;
+  }
+}
+
+.DiscussionSummary-icon {
+  .Avatar--size(64px);
+  background-color: var(--control-bg);
+  color: var(--control-color);
+
+  @media @phone {
+    .Avatar--size(32px);
+  }
+}
+
+.DiscussionSummary-main {
+  min-width: 0;
+}
+
+.DiscussionSummary-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+}
+
+.DiscussionSummary-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.DiscussionSummary--collapsed .DiscussionSummary-header {
+  min-height: 64px;
+
+  @media @phone {
+    min-height: 32px;
+  }
+}
+
+.DiscussionSummary-body {
+  margin-top: 10px;
+}
+
+.DiscussionSummary-status,
+.DiscussionSummary-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 15px;
+  color: var(--muted-color);
+  font-size: 13px;
+}
+
+.DiscussionSummary-footer {
+  margin-top: 10px;
+
+  .Button--link {
+    padding: 0;
+    color: var(--muted-color);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--link-color);
+    }
+  }
+}
